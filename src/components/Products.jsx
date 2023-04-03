@@ -6,6 +6,7 @@ import EachProduct from "./EachProduct";
 
 const Products = () => {
   const dispatch = useDispatch();
+  const categories = [];
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -16,6 +17,16 @@ const Products = () => {
 
   return (
     <div>
+      <div>
+        <label htmlFor="cstegory">Choose a Category</label>
+        <select name="category" id="category">
+          <option value="all">All</option>
+          <option value="men's clothing">Men's Clothing</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="electronics">Electronics</option>
+          <option value="women's clothing">Women's Clothing</option>
+        </select>
+      </div>
       {state.error ? (
         <h2> {state.error}</h2>
       ) : state.loading ? (

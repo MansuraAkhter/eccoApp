@@ -1,0 +1,16 @@
+let cartItems = [...state.cartItems]; // {quantity: 1, product: {id: 1}}
+      let idx = cartItems.findIndex((item) => {
+        return item.product.id == action.payload.product.id;
+      });
+      if (idx == -1) {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, action.payload],
+        };
+      } else {
+        cartItems[idx].quantity += action.payload.quantity;
+        return {
+          ...state,
+          cartItems: cartItems,
+        };
+      }

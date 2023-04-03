@@ -7,10 +7,11 @@ const Cart = () => {
     <div>
       {cartItems &&
         cartItems.map((item) => (
-          <div key={item.id}>
-            <h1>{item.title}</h1>
-            <img src={item.image} alt="product" className="w-16" />
-            <h6>{item.price}</h6>
+          <div key={item.product.id}>
+            <h1>{item.product.title}</h1>
+            <img src={item.product.image} alt="product" className="w-16" />
+            <h6>{item.product.price}</h6>
+            <h6>{item.quantity}</h6>
           </div>
         ))}
     </div>

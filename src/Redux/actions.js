@@ -63,11 +63,11 @@ export const getProductDetails = (id) => {
   };
 };
 
-export const addToCart = (userId, date, product) => {
+export const addToCart = (userId, quantity, product) => {
   console.log(product);
   return {
     type: ADD_TO_CART,
-    payload: product,
+    payload: { quantity: quantity, product },
   };
 };
 // export const addToCart = (userId, date, productId) => {

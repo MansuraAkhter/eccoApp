@@ -50,10 +50,25 @@ const allProductsReducer = (state = initialState, action) => {
       };
 
     case ADD_TO_CART:
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.payload],
-      };
+      let cartItems = [...state.cartItems];
+      //new product insert prouct object
+      const index = cartItems.findIndex(
+        (item) => item.product.id == action.payload.product.id
+      );
+      if (index == -1) {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, action.payload],
+        };
+      } else {
+        cartItems[index].quantity += action.payload.quantity;
+        return {
+          ...state,
+          cartItems: cartItems,
+        };
+      }
+    //update quantity
+
     // case GET_CART_ITEMS:
     //   return {
     //     ...state,

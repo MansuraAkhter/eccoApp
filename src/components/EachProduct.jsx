@@ -7,7 +7,6 @@ const EachProduct = ({ product }) => {
   const navigate = useNavigate();
 
   const handleClick = (id) => {
-    dispatch(getProductDetails(id));
     navigate(`/productDetails/${id}`);
   };
 
@@ -26,7 +25,7 @@ const EachProduct = ({ product }) => {
       <h6>{product.price}</h6>
       <button
         onClick={() => {
-          dispatch(addToCart(1, date, product));
+          dispatch(addToCart(1, 1, product));
         }}
       >
         Add to Cart
