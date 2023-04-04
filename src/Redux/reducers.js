@@ -3,9 +3,10 @@ import {
   FETCH_SUCCESS,
   FETCH_ERROR,
   GET_ALL_PRODUCTS,
-  // GET_CART_ITEMS,
   ADD_TO_CART,
   GET_PRODUCT_DETAILS,
+  GET_IN_CATEGORY,
+  REMOVE_FROM_CART,
 } from "./ActionTypes";
 
 const initialState = {
@@ -43,6 +44,13 @@ const allProductsReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
       };
+
+    case GET_IN_CATEGORY:
+      return {
+        ...state,
+        allProducts: action.payload,
+      };
+
     case GET_PRODUCT_DETAILS:
       return {
         ...state,
@@ -51,7 +59,6 @@ const allProductsReducer = (state = initialState, action) => {
 
     case ADD_TO_CART:
       let cartItems = [...state.cartItems];
-      //new product insert prouct object
       const index = cartItems.findIndex(
         (item) => item.product.id == action.payload.product.id
       );
@@ -67,13 +74,28 @@ const allProductsReducer = (state = initialState, action) => {
           cartItems: cartItems,
         };
       }
-    //update quantity
+    case REMOVE_FROM_CART:
+      let cartItemss = [...state.cartItems];
+      if (action.payload.quantity > 1) {
+        const index = cartItemss.findIndex(
+          (item) => item.product.id == action.payload.product.id
+        );
+        cartItemss[index].quantity -= 1;
+        return {
+          ...state,
+          cartItems: cartItemss,
+        };
+      } else {
+        console.log(action.payload.product.id);
+        return {
+          ...state,
+          cartItems: state.cartItems.filter((item) => {
+            if (item.product.id === action.payload.product.id) return false;
+            else return true;
+          }),
+        };
+      }
 
-    // case GET_CART_ITEMS:
-    //   return {
-    //     ...state,
-    //     cartItems: action.payload,
-    //   };
     default:
       return state;
   }
