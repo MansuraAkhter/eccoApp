@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Macondo&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav {
+  padding: 0 20px;
+}
+
+.nav.active,
+.nav:hover {
+  color: #f87171;
+}
