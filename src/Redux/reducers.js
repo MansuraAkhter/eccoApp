@@ -7,6 +7,8 @@ import {
   GET_PRODUCT_DETAILS,
   GET_IN_CATEGORY,
   REMOVE_FROM_CART,
+  SIGN_IN,
+  SIGN_OUT,
 } from "./ActionTypes";
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
   productDetails: {},
   error: "",
   cartItems: [],
+  itemCount: 0,
+  auth: false,
 };
 
 const allProductsReducer = (state = initialState, action) => {
@@ -59,6 +63,8 @@ const allProductsReducer = (state = initialState, action) => {
 
     case ADD_TO_CART:
       let cartItems = [...state.cartItems];
+      let itemCount = state.itemCount;
+      itemCount++;
       const index = cartItems.findIndex(
         (item) => item.product.id == action.payload.product.id
       );
@@ -66,16 +72,20 @@ const allProductsReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: [...state.cartItems, action.payload],
+          itemCount: itemCount,
         };
       } else {
         cartItems[index].quantity += action.payload.quantity;
         return {
           ...state,
           cartItems: cartItems,
+          itemCount: itemCount,
         };
       }
     case REMOVE_FROM_CART:
       let cartItemss = [...state.cartItems];
+      let itemCounts = state.itemCount;
+      itemCounts--;
       if (action.payload.quantity > 1) {
         const index = cartItemss.findIndex(
           (item) => item.product.id == action.payload.product.id
@@ -84,18 +94,28 @@ const allProductsReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: cartItemss,
+          itemCount: itemCounts,
         };
       } else {
-        console.log(action.payload.product.id);
         return {
           ...state,
+          itemCount: itemCounts,
           cartItems: state.cartItems.filter((item) => {
             if (item.product.id === action.payload.product.id) return false;
             else return true;
           }),
         };
       }
-
+    case SIGN_IN:
+      return {
+        ...state,
+        auth: true,
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        auth: false,
+      };
     default:
       return state;
   }

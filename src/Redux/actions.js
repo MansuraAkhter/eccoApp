@@ -9,6 +9,8 @@ import {
   GET_PRODUCT_DETAILS,
   GET_IN_CATEGORY,
   REMOVE_FROM_CART,
+  SIGN_IN,
+  SIGN_OUT,
 } from "./ActionTypes";
 
 export const fetchStart = () => {
@@ -108,24 +110,34 @@ export const removeFromCart = (item) => {
   };
 };
 
-// export const addToCart = (userId, date, productId) => {
-//   return (dispatch) => {
-//     dispatch(fetchStart());
-//     axios
-//       .post(`${Config.BASE_URL}/carts`, {
-//         userId,
-//         date,
-//         products: [{ productId: productId, quantity: 1 }],
-//       })
-//       .then((data) => {
-//         console.log(data.data);
-//         dispatch(fetchSuccess());
-//       })
-//       .catch((error) => {
-//         dispatch(fetchError(error.message));
-//       });
-//   };
-// };
+export const signIn = (value) => {
+  const username = value.username;
+  const password = value.password;
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .post(`${Config.BASE_URL}/auth/login`, {
+        username,
+        password,
+      })
+      .then((data) => {
+        console.log(data.data);
+        dispatch(fetchSuccess());
+        window.localStorage.setItem("token", data.data.token);
+        dispatch({ type: SIGN_IN });
+      })
+      .catch((error) => {
+        dispatch(fetchError(error.message));
+      });
+  };
+};
+
+export const signOut = () => {
+  localStorage.removeItem("token");
+  return {
+    type: SIGN_OUT,
+  };
+};
 
 // export const getCartItems = (id) => {
 //   return (dispatch) => {

@@ -15,7 +15,7 @@ const ProductDetails = () => {
   return (
     <div className="flex justify-center">
       <div className="p-10 mt-10 max-w-3xl flex border-2 border-red-300 rounded">
-        <div className="w-1/3">
+        <div className="w-1/3 flex items-center">
           <img src={details?.image} alt="product" className="w-64" />
         </div>
         <div className="p-10 w-2/3">
@@ -31,8 +31,8 @@ const ProductDetails = () => {
               className="w-6 mr-1 text-yellow-500"
             >
               <path
-                clip-rule="evenodd"
-                fill-rule="evenodd"
+                clipRule="evenodd"
+                fillRule="evenodd"
                 d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
               ></path>
             </svg>
