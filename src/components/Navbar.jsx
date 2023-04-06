@@ -32,7 +32,7 @@ const Navbar = () => {
             onClick={() => {
               dispatch(signOut());
             }}
-            className="text-yellow-100 bg-gray-700 px-5 border-solid rounded-3xl pt-1 hover:bg-red-400"
+            className="text-yellow-100 bg-gray-700 px-5 cursor-pointer  border-solid rounded-3xl pt-1 hover:bg-red-300 transition ease-out duration-500"
           >
             Sign out
           </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
             onClick={() => {
               navigate("/signin");
             }}
-            className="text-yellow-100 bg-gray-700 px-5 border-solid rounded-3xl pt-1 hover:bg-red-400"
+            className="text-yellow-100 bg-gray-700 px-5 cursor-pointer border-solid rounded-3xl pt-1 hover:bg-red-300 transition ease-out duration-500"
           >
             Sign in
           </div>

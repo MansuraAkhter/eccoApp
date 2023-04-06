@@ -37,7 +37,7 @@ const EachProduct = ({ product }) => {
         onClick={() => {
           dispatch(addToCart(1, 1, product));
         }}
-        className="flex justify-center bg-red-300 p-3 text-white font-normal  border-t-2 border-red-300 hover:text-red-500  hover:bg-white cursor-pointer"
+        className="flex justify-center bg-red-300 p-3 text-white font-normal  border-t-2 border-red-300 hover:text-red-500  hover:bg-white cursor-pointer transition ease-out duration-500"
       >
         <svg
           fill="none"
