@@ -14,7 +14,7 @@ const ProductDetails = () => {
   const date = new Date();
   return (
     <div className="flex justify-center">
-      <div className="p-10 mt-10 max-w-3xl flex border-2 border-red-300 rounded">
+      <div className="p-10 mt-10 max-w-3xl flex border-2 border-red-300 rounded mb-40">
         <div className="w-1/3 flex items-center">
           <img src={details?.image} alt="product" className="w-64" />
         </div>
