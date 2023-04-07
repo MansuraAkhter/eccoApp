@@ -2,11 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, getProductDetails } from "../Redux/actions";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const details = useSelector((state) => state.productDetails);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -48,7 +52,11 @@ const ProductDetails = () => {
             <div className="flex justify-center">
               <button
                 onClick={() => {
-                  dispatch(addToCart(1, date, details));
+                  if (auth == true) {
+                    dispatch(addToCart(1, details));
+                  } else {
+                    navigate("/signin");
+                  }
                 }}
                 className="py-2 px-10 mt-10 bg-red-300 text-white border-2 border-red-300 hover:text-red-300 hover:bg-white transition ease-out duration-500"
               >

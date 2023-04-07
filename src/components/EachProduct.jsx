@@ -6,6 +6,8 @@ const EachProduct = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const auth = useNavigate((state) => state.auth);
+
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`);
   };
@@ -35,7 +37,11 @@ const EachProduct = ({ product }) => {
       </div>
       <div
         onClick={() => {
-          dispatch(addToCart(1, 1, product));
+          if (auth == true) {
+            dispatch(addToCart(1, details));
+          } else {
+            navigate("/signin");
+          }
         }}
         className="flex justify-center bg-red-300 p-3 text-white font-normal  border-t-2 border-red-300 hover:text-red-500  hover:bg-white cursor-pointer transition ease-out duration-500"
       >

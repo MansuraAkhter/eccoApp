@@ -95,7 +95,7 @@ export const getProductDetails = (id) => {
   };
 };
 
-export const addToCart = (userId, quantity, product) => {
+export const addToCart = (quantity, product) => {
   console.log(product);
   return {
     type: ADD_TO_CART,
