@@ -6,10 +6,18 @@ const EachProduct = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const auth = useNavigate((state) => state.auth);
+  const auth = useSelector((state) => state.auth);
 
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`);
+  };
+
+  const handleCart = () => {
+    if (auth == true) {
+      dispatch(addToCart(1, product));
+    } else {
+      navigate("/signin");
+    }
   };
 
   return (
@@ -36,13 +44,7 @@ const EachProduct = ({ product }) => {
         </div>
       </div>
       <div
-        onClick={() => {
-          if (auth == true) {
-            dispatch(addToCart(1, details));
-          } else {
-            navigate("/signin");
-          }
-        }}
+        onClick={handleCart}
         className="flex justify-center bg-red-300 p-3 text-white font-normal  border-t-2 border-red-300 hover:text-red-500  hover:bg-white cursor-pointer transition ease-out duration-500"
       >
         <svg

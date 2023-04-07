@@ -15,6 +15,14 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, []);
+
+  const handleClick = () => {
+    if (auth == true) {
+      dispatch(addToCart(1, details));
+    } else {
+      navigate("/signin");
+    }
+  };
   const date = new Date();
   return (
     <div className="flex justify-center">
@@ -51,13 +59,7 @@ const ProductDetails = () => {
           {details && (
             <div className="flex justify-center">
               <button
-                onClick={() => {
-                  if (auth == true) {
-                    dispatch(addToCart(1, details));
-                  } else {
-                    navigate("/signin");
-                  }
-                }}
+                onClick={handleClick}
                 className="py-2 px-10 mt-10 bg-red-300 text-white border-2 border-red-300 hover:text-red-300 hover:bg-white transition ease-out duration-500"
               >
                 Add to cart
