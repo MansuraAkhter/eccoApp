@@ -32,12 +32,12 @@ const Products = () => {
 
   return (
     <div>
-      <div className="flex justify-center py-8 mx-96">
+      <div className="md:flex md:justify-center py-8">
         <select
           name="category"
           id="category"
           onChange={(e) => dispatch(getInCategory(e.target.value))}
-          className="p-2 px-5 mr-6 rounded-md text-gray-500 focus:outline-none ring-2 ring-gray-400 focus:ring-2 focus:ring-red-300"
+          className="p-2 px-5 mr-6 m-6 rounded-md text-gray-500 focus:outline-none ring-2 ring-gray-400 focus:ring-2 focus:ring-red-300"
         >
           <option value="all">Choose category: All</option>
           <option value="men's clothing">Men's Clothing</option>
@@ -46,7 +46,7 @@ const Products = () => {
           <option value="women's clothing">Women's Clothing</option>
         </select>
 
-        <div className="relative flex items-center text-gray-400 focus-within:text-gray-600 w-full">
+        <div className="relative flex items-center text-gray-400 focus-within:text-gray-600 ">
           <svg
             fill="none"
             stroke="currentColor"
@@ -67,7 +67,7 @@ const Products = () => {
             value={search}
             placeholder="search..."
             onChange={handleSearch}
-            className="px-5 pl-10 py-2 ml-6 rounded-md focus:outline-none ring-2 ring-gray-400 focus:ring-2 focus:ring-red-300 w-full"
+            className="px-5 pl-10 py-2 ml-6 rounded-md focus:outline-none ring-2 ring-gray-400 focus:ring-2 focus:ring-red-300"
           />
         </div>
       </div>

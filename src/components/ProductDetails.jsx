@@ -26,11 +26,11 @@ const ProductDetails = () => {
   const date = new Date();
   return (
     <div className="flex justify-center">
-      <div className="p-10 mt-10 max-w-3xl flex border-2 border-red-300 rounded mb-40">
-        <div className="w-1/3 flex items-center">
+      <div className="p-10 mt-10 max-w-3xl md:flex border-2 border-red-300 rounded mb-40">
+        <div className="md:w-1/3 md:flex items-center">
           <img src={details?.image} alt="product" className="w-64" />
         </div>
-        <div className="p-10 w-2/3">
+        <div className="p-10 md:w-2/3">
           <h1 className="text-2xl text-gray-700 mb-5">{details?.title}</h1>
           <h1>{details?.description}</h1>
           <h1 className="my-8 text-orange-400 text-4xl">${details?.price}</h1>

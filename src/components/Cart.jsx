@@ -13,12 +13,12 @@ const Cart = () => {
     <div>
       {cartItems.length ? (
         cartItems.map((item) => (
-          <div key={item.product.id} className="flex justify-center h-48">
-            <div className="flex border-2 border-red-300 rounded p-5 m-5 w-2/4">
+          <div key={item.product.id} className="md:flex justify-center md:h-48">
+            <div className="md:flex border-2 border-red-300 rounded p-5 m-5 md:w-2/4">
               <div className="mr-5 flex items-center">
                 <img src={item.product.image} alt="product" className="w-16" />
               </div>
-              <div className="flex items-center w-2/4">
+              <div className="md:flex md:items-center md:w-2/4">
                 <h1 className=" text-black pr-5">{item.product.title}</h1>
               </div>
               <div className="flex items-center">
@@ -31,7 +31,7 @@ const Cart = () => {
                   </h6>
                 </div>
               </div>
-              <div className="flex items-center ">
+              <div className="flex items-center justify-center ">
                 <button
                   onClick={() => {
                     dispatch(removeFromCart(item));
